@@ -1,6 +1,7 @@
 let button = document.querySelector('.todo_button');
 let input = document.querySelector('.todo_input');
 let list = document.querySelector('.todo_list');
+let select = document.querySelector('.select');
 
  
 let todoDiv;
@@ -8,13 +9,22 @@ let todoLi;
 let close;
 let done;
 let n = 0;
+
+select.addEventListener("click", test);
  
 button.addEventListener("click", add);
+
+function test(event){
+   event.preventDefault(); // otherwise the button will reset'
+   list.innerHTML = localStorage.getItem('list')
+
+}
  
 function add(event){
-    event.preventDefault(); // otherwise the button will reset
-    if(input.value){ // if you haven't written anything it will not print it
+   event.preventDefault(); // otherwise the button will reset
+   if(input.value){ // if you haven't written anything it will not print it
         todoDiv = document.createElement('div'); // this creates a div that is called todoDiv
+       
         todoDiv.classList.add('todo'); // and you give that div this class
         todoDiv.setAttribute("completed", "false"); // sätt ett värde som säger om upgiften är klar eller inte 
         todoDiv.id = ++n; // sätter ett id på varje uppgift 
@@ -41,6 +51,9 @@ function add(event){
         
         todoDiv.appendChild(close);
         todoDiv.appendChild(done);
+        console.log();
+
+        //let obj = {value: todo, status: };
 
     }
 }
@@ -56,6 +69,7 @@ function comElem(event){
     event.preventDefault(); // otherwise the button will reset
     let elem = document.getElementById(event.target.parentNode.id); // hitta id:et på förälden till kanppen som är diven som skas ta bort 
     console.log(elem.getAttribute("completed"))
+    
     if(elem.getAttribute("completed") == "true"){ // om uppgiften är avklarad ska den bli oklarad ifall man trycker på klar knappen igen
         elem.setAttribute("completed", "false");
         elem.classList.remove('completedItem'); // tar bort css:en för det avklarde uppgifterna
@@ -67,3 +81,8 @@ function comElem(event){
     
 
 }
+
+
+// spara som ett objkt med ett värde och status 
+// spara i storageet 
+// hämta den sen och skapa om elemeneten ge de värdena av objekten
