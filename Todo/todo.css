@@ -116,20 +116,9 @@ select{
     background: #b65337;
 }
 
-.fa-trash,
-.fa-check{
-    pointer-events: none;
-}
-
 /* STYLING TASK THAT IS COMPLETED */
 .completedItem{
     text-decoration: line-through;
     opacity: 0.5;
     transform: scale(0.96);
 }
-/* DELETING THE TASKS */
-.fall{
-    transform: translateY(4rem) scale(0.4) rotateZ(20deg);
-    opacity: 0;
-}
-
